@@ -13,11 +13,11 @@ import javax.validation.constraints.NotNull;
 @Document(collection = "actions")
 public class Action {
 
-    String id;
+    private String id;
 
-    @NotNull
-    String text;
+    private String text;
 
-    @NotNull
-    Integer points;
+    private Integer points;
+
+    private ActionType type;
 }
