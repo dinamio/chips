@@ -2,6 +2,7 @@ package com.jimmy.chips.service;
 
 import com.jimmy.chips.dao.ActionDao;
 import com.jimmy.chips.entity.Action;
+import com.jimmy.chips.entity.ActionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,9 @@ public class ActionService {
 
     public void deleteAction(String id) {
         actionDao.delete(id);
+    }
+
+    public List<Action> getActionsByType(ActionType type) {
+        return actionDao.getActionsByType(type);
     }
 }

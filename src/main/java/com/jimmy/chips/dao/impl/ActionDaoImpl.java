@@ -2,8 +2,10 @@ package com.jimmy.chips.dao.impl;
 
 import com.jimmy.chips.dao.ActionDao;
 import com.jimmy.chips.entity.Action;
+import com.jimmy.chips.entity.ActionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
@@ -37,5 +39,11 @@ public class ActionDaoImpl implements ActionDao {
     @Override
     public void delete(String id) {
         template.remove(new Query(Criteria.where("id").is(id)),Action.class);
+    }
+
+    @Override
+    public List<Action> getActionsByType(ActionType type) {
+        BasicQuery query = new BasicQuery("{ type : '"+type+"'}");
+        return template.find(query, Action.class);
     }
 }

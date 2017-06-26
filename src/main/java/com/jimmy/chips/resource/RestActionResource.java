@@ -1,6 +1,7 @@
 package com.jimmy.chips.resource;
 
 import com.jimmy.chips.entity.Action;
+import com.jimmy.chips.entity.ActionType;
 import com.jimmy.chips.service.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,7 @@ public class RestActionResource {
         actionService.insert(action);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<Action> getAllActions() {
        return actionService.getAllActions();
@@ -40,5 +42,11 @@ public class RestActionResource {
     @DeleteMapping(value = "/{id}")
     public void deleteAction(@PathVariable String id) {
         actionService.deleteAction(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value = "/type/{typeName}")
+    public List<Action> getActionsByType(@PathVariable ActionType typeName) {
+        return actionService.getActionsByType(typeName);
     }
 }

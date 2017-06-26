@@ -1,6 +1,7 @@
 package com.jimmy.chips.dao;
 
 import com.jimmy.chips.entity.Action;
+import com.jimmy.chips.entity.ActionType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface ActionDao {
     Action findOne(String actionId);
 
     void delete(String id);
+
+    List<Action> getActionsByType(ActionType type);
 }
